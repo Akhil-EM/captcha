@@ -25,10 +25,14 @@
       <form method="post" action="/">
         <div class="col-md-12"></div>
         <div class="form-group col-md-12">
-          <label for="name">Name:</label>
-          <input type="text" class="form-control" name="name" required/>
+          <label for="title">Title:</label>
+          <input type="text" class="form-control" name="title" required/>
         </div>
-        <div class="g-recaptcha" data-sitekey="<%=siteKey%>"></div>
+        <div class="form-group col-md-12">
+          <label for="title">Content:</label>
+          <textarea class="form-control" cols="3" name="content"></textarea>
+        </div>
+        <div class="g-recaptcha mt-3" data-sitekey="<%=siteKey%>"></div>
         <div class="col-12"></div>
         <div class="form-group mt-3">
           <button type="submit" class="btn btn-primary">Send</button>
@@ -37,11 +41,17 @@
     </div>
     <div class="mt-5">
       <h4>posted values</h4>
-      <% names.forEach(name => { %>
-        <h6 ><%=name %></h6>
+      <% db.forEach(element => { %>
+        <div class="card mb-3" style="width: 18rem;">
+          <div class="card-body">
+            
+            <h6 class="card-subtitle mb-2 text-muted"><%= element.title %></h6>
+            <p class="card-text"><%= element.content %></p>
+            <a href="/delete/<%= element.id %>" class="card-link">Delete</a>
+          </div>
+        </div>
       <% }) %>
     </div>
-
     <script  src="https://www.google.com/recaptcha/api.js?render=<%= siteKey %>"></script>
   
     <script>
