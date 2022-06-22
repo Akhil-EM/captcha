@@ -20,7 +20,7 @@ router.post('/',(req,res,next)=>{
   axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${captchaResponse}`,
        {})
        .then(data=>{
-          console.log(data.data);
+          names.push(req.body.name);
           res.render('index', { title: 'Express',siteKey,names,error:"",success:"captcha verified"});
        })
        .catch(error =>{
