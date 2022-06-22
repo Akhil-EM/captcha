@@ -6,7 +6,7 @@ var siteKey = process.env.SITE_KEY;
 var names = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express',siteKey,names:[],error:null,success:null});
+  res.render('index', { title: 'Express',siteKey,names,error:null,success:null});
 });
 
 router.post('/',(req,res,next)=>{
